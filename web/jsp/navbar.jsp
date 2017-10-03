@@ -9,9 +9,11 @@
         <div class='navbar'>
         <table>
             <tr>
-                <td>${sessionScope.user.firstname}</td>
-                <td><a href='#'>Home</a></td>
-                <td><a href='${pageContext.request.contextPath}/login?action=logout'>Logout</a></td>
+                <td colspan="3"><a href='${pageContext.request.contextPath}/jsp/home.jsp'>Home</a></td>
+                <td colspan="1"><a href='${pageContext.request.contextPath}/user?action=getUserProfile'>User</a></td>
+                <td colspan="3">${sessionScope.user.firstname}</td>
+                <td colspan="3">${sessionScope.user.usertype}</td>
+                <td colspan="3"><a href='${pageContext.request.contextPath}/login?action=logout'>Logout</a></td>
             </tr>
         </table>
         </div>

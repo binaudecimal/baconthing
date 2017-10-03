@@ -7,7 +7,7 @@
     </head>
     <body>
         <H1>Login</H1>
-    <class div='loginInput'>
+    <class width='100%' div='loginInput'>
         <form action="${pageContext.request.contextPath}/login" method='post' name='login'>
             <input type='hidden' name='action' value='login'/>
             <label for='uname'>Username :</label>

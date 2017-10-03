@@ -3,22 +3,26 @@ package com.model;
 public class User {
     private String username, password, firstname, lastname, usertype;
     private long id;
+    private boolean active;
 
-    public User(String username, String password, String firstname, String lastname, String usertype, long id) {
+    public User(String username, String password, String firstname, String lastname, String usertype, long id, boolean active) {
         this.username = username;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.usertype = usertype;
         this.id = id;
+        this.active = active;
     }
-    
-    public User(){}
-    public User(String username, String password){
+
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    public User() {
+    }
+    
     public String getUsername() {
         return username;
     }
@@ -67,10 +71,17 @@ public class User {
         this.id = id;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "username=" + username + ", password=" + password + ", firstname=" + firstname + ", lastname=" + lastname + ", usertype=" + usertype + ", id=" + id + '}';
+        return "User{" + "username=" + username + ", password=" + password + ", firstname=" + firstname + ", lastname=" + lastname + ", usertype=" + usertype + ", id=" + id + ", active=" + active + '}';
     }
-    
     
 }
