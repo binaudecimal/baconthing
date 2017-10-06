@@ -36,11 +36,27 @@ public class UserDAO {
         this.connection = connection;
     }
     
-    public LinkedList<User> getUser(String username) throws SQLException{
+    public LinkedList<User> getUser(String username) throws SQLException, Exception{
         LinkedList<User> result = new LinkedList<User>();
         ps = connection.prepareStatement("SELECT * from UserDb where username = ?");
         ps.setString(1, username);
-        ResultSet rs = ps.executeQuery();
+        result = toList(ps.executeQuery());
+        ps.close();
+        
+        return result;
+    }
+    
+    public LinkedList<User> viewUsers(String username) throws SQLException, Exception{
+        LinkedList<User> result = new LinkedList<User>();
+        ps = connection.prepareStatement("SELECT * from UserDb");
+        result = toList(ps.executeQuery());
+        ps.close();
+        
+        return result;
+    }
+    
+    public LinkedList<User> toList(ResultSet rs) throws Exception{
+        LinkedList<User> result = new LinkedList<User>();
         while(rs.next()){
             User user = new User(
                 rs.getString(UN),
@@ -48,16 +64,12 @@ public class UserDAO {
                 rs.getString(FN),
                 rs.getString(PW),
                 rs.getString(UT),
-                rs.getLong(ID),
+                rs.getLong(ID), 
                 rs.getBoolean(UA)
             );
             result.push(user);
         }
-        ps.close();
-        
         return result;
     }
-    
-    
     
 }
